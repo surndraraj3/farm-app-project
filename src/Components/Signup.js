@@ -11,13 +11,34 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 const SignupPage = (props, {navigation}) => {
   const [isShowPass, setShowPasskey] = useState(true);
+  const [firstname, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPass, setUserPass] = useState('');
+  const [userMobile, setUserMobileNum] = useState('');
+  const [error, setError] = useState('');
+  const [isValid, setValid] = useState(true);
 
   const ShowPassKey = () => {
     if (isShowPass) setShowPasskey(false);
     else setShowPasskey(true);
+  };
+  const __doCreateUser = async (email, password) => {
+    try {
+      let response = await auth().createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+      if (response) {
+        console.log(tag, '?', response);
+      }
+    } catch (e) {
+      console.error(e.message);
+    }
   };
 
   return (
@@ -85,8 +106,19 @@ const SignupPage = (props, {navigation}) => {
           underlineColorAndroid="transparent"
         />
       </View>
+      <View style={styles.sectionStyle}>
+        <Image
+          source={require('../../assets/mobile.png')}
+          style={styles.imageStyle}
+        />
+        <TextInput
+          style={{flex: 1}}
+          placeholder="Enter Mobile Number Here"
+          underlineColorAndroid="transparent"
+        />
+      </View>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={__doCreateUser}>
         <Text
           style={{
             color: '#fff',
