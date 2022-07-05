@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   ScrollView,
   SafeAreaView,
@@ -11,14 +11,36 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
-const LoginPage = ({navigation}, props) => {
+const LoginPage = ({ navigation }, props) => {
   const [isShowPass, setShowPasskey] = useState(true);
+  const [userEmail, setUserEmail] = useState("");
+  const [userPass, setUserPass] = useState("");
 
   const ShowPassKey = () => {
     if (isShowPass) setShowPasskey(false);
     else setShowPasskey(true);
   };
+
+  const LoginWithUser = () => {
+    console.log('---', userEmail, userPass);
+    auth()
+      .signInWithEmailAndPassword(userEmail, userPass)
+      .then((res) => {
+        console.log('User account created & signed in!', res);
+      })
+      .catch(error => {
+        if(error.code === "auth/wrong-password") {
+          alert('Wrong Password');
+        }
+        if(error.code === "auth/user-not-found"){
+          alert('User not found!');
+        }
+
+        console.log(error);
+      });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,7 +52,7 @@ const LoginPage = ({navigation}, props) => {
           backgroundColor: '#f8f9fa',
         }}>
         <Image
-          style={{paddingBottom: 20, width: '80%', height: 100}}
+          style={{ paddingBottom: 20, width: '80%', height: 100 }}
           source={require('../../assets/new-logo.png')}
         />
       </View>
@@ -40,9 +62,10 @@ const LoginPage = ({navigation}, props) => {
           style={styles.imageStyle}
         />
         <TextInput
-          style={{flex: 1}}
+          style={{ flex: 1 }}
           placeholder="Enter Your Name Here"
           underlineColorAndroid="transparent"
+          onChangeText={(textUserEmail) => setUserEmail(textUserEmail)}
         />
       </View>
       <View style={styles.sectionStyle}>
@@ -51,10 +74,11 @@ const LoginPage = ({navigation}, props) => {
           style={styles.imageStyle}
         />
         <TextInput
-          style={{flex: 1}}
+          style={{ flex: 1 }}
           placeholder="Enter Your Password Here"
           underlineColorAndroid="transparent"
           secureTextEntry={isShowPass}
+          onChangeText={(textUserPass) => setUserPass(textUserPass)}
         />
         <TouchableOpacity onPress={ShowPassKey}>
           <Image
@@ -64,7 +88,7 @@ const LoginPage = ({navigation}, props) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={LoginWithUser}>
         <Text
           style={{
             color: '#fff',
@@ -100,7 +124,7 @@ const LoginPage = ({navigation}, props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1, height: StatusBar.height},
+  container: { flex: 1, height: StatusBar.height },
 
   sectionStyle: {
     flexDirection: 'row',
@@ -127,7 +151,7 @@ const styles = StyleSheet.create({
     elevation: 6,
     backgroundColor: '#0f458d',
     shadowRadius: 15,
-    shadowOffset: {width: 56, height: 13},
+    shadowOffset: { width: 56, height: 13 },
     width: '90%',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "33688739103",
-    "project_id": "farmapp-e93c0",
-    "storage_bucket": "farmapp-e93c0.appspot.com"
+    "project_number": "838722946363",
+    "project_id": "farm-app-8bb27",
+    "storage_bucket": "farm-app-8bb27.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:33688739103:android:f9a4d6d93b03dac2ab642a",
+        "mobilesdk_app_id": "1:838722946363:android:7126dff8775e487a66e31e",
         "android_client_info": {
           "package_name": "com.farmapp_proj"
         }
       },
       "oauth_client": [
         {
-          "client_id": "33688739103-uo3f5d7th810l2dvk7394uhp84npvj8t.apps.googleusercontent.com",
+          "client_id": "838722946363-qnhknq4u8up9bf1cciut7ij0m2avfiil.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAq-IfSRGWRxvd0KplnBK954sVsroRUk6A"
+          "current_key": "AIzaSyCpkZBNjzECKlC7k43-tdiFodQ9zzMSedE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "33688739103-uo3f5d7th810l2dvk7394uhp84npvj8t.apps.googleusercontent.com",
+              "client_id": "838722946363-qnhknq4u8up9bf1cciut7ij0m2avfiil.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
