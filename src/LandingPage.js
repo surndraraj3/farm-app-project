@@ -151,6 +151,29 @@ const LandingPage = ({navigation}, props) => {
             </Text>
           </TouchableOpacity>
         </View>
+        {/* Owner Image */}
+        <View style={styles.card}>
+          
+          <TouchableOpacity onPress={() => navigation.replace('Awards')}>
+            <Image
+              style={{width: '100%',height: 350}}
+              resizeMode="cover"
+              source={require('../assets/owner1.jpg')}
+              // source={{
+              //   uri: '<https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?cs=srgb&dl=pexels-michael-block-3225517.jpg&fm=jpg>',
+              // }}
+            />
+          </TouchableOpacity>
+          <View style={styles.footer}>
+            <Text>
+              <Text
+                style={styles.followText}
+               >
+                Farmer, Social Worker,  గ్రామీణ శాస్త్రవేత్త
+              </Text>
+            </Text>
+          </View>
+        </View>
         <View style={{marginBottom: 20}}>
           <SliderBox
             // ImageComponent={FastImage}
